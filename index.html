@@ -19,6 +19,9 @@
                     <option value="hard">Difícil</option>
                 </select>
                 <button id="new-game">Novo Jogo</button>
+                <button id="help-btn" title="Ajuda">
+                    <i class="fas fa-question-circle"></i>
+                </button>
                 <div id="timer">00:00</div>
             </div>
         </header>
@@ -40,6 +43,52 @@
         </div>
         
         <div id="message"></div>
+        
+        <!-- Modal de Instruções -->
+        <div id="instructions-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Como Jogar SUDOKU DO ZÉ</h2>
+                <div class="instructions">
+                    <div class="instruction-item">
+                        <h3>Objetivo</h3>
+                        <p>Preencha a grade 9x9 com números de 1 a 9 de forma que cada linha, coluna e caixa 3x3 contenha todos os dígitos de 1 a 9 sem repetição.</p>
+                    </div>
+                    
+                    <div class="instruction-item">
+                        <h3>Controles</h3>
+                        <ul>
+                            <li><strong>Clique</strong> em uma célula vazia para selecioná-la</li>
+                            <li>Use os <strong>botões numéricos</strong> ou o <strong>teclado</strong> para inserir números</li>
+                            <li>Pressione <strong>Delete</strong> ou clique em <strong>Limpar</strong> para remover um número</li>
+                            <li>Use as <strong>setas do teclado</strong> para navegar entre as células</li>
+                            <li>Pressione <strong>Ctrl+N</strong> para iniciar um novo jogo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="instruction-item">
+                        <h3>Dicas</h3>
+                        <ul>
+                            <li>Números em <span class="fixed-example">preto</span> são fixos e não podem ser alterados</li>
+                            <li>Números em <span class="user-example">azul</span> são suas inserções</li>
+                            <li>Números em <span class="error-example">vermelho</span> indicam conflitos</li>
+                            <li>Comece preenchendo os números óbvios primeiro</li>
+                            <li>Use o botão "Novo Jogo" para reiniciar a qualquer momento</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="difficulty-info">
+                        <h3>Níveis de Dificuldade</h3>
+                        <ul>
+                            <li><strong>Fácil:</strong> Mais números preenchidos, ideal para iniciantes</li>
+                            <li><strong>Médio:</strong> Desafio equilibrado para jogadores intermediários</li>
+                            <li><strong>Difícil:</strong> Para especialistas em Sudoku</li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="start-playing" class="start-btn">Começar a Jogar</button>
+            </div>
+        </div>
         
         <footer class="footer">
             <div class="footer-content">

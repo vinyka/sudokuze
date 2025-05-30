@@ -426,6 +426,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Initialize the game
+    // Modal de Instruções
+    const modal = document.getElementById('instructions-modal');
+    const helpBtn = document.getElementById('help-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const startBtn = document.getElementById('start-playing');
+    
+    // Mostrar modal quando a página carregar
+    window.addEventListener('load', () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Impede o scroll da página
+    });
+    
+    // Mostrar modal ao clicar no botão de ajuda
+    helpBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+    
+    // Fechar modal ao clicar no X
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Fechar modal ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Botão Começar a Jogar
+    startBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Fechar com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Inicializar o jogo
     init();
 });
