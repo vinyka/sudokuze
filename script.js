@@ -323,12 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
         isGameOver = true;
         clearInterval(timer);
         
+        const messageEl = document.getElementById('message');
+        messageEl.className = ''; // Clear previous classes
+        
         if (isWin) {
-            document.getElementById('message').textContent = 'Parabéns! Você venceu!';
-            document.getElementById('message').style.color = 'green';
+            messageEl.textContent = '🎉 Parabéns! Você venceu o SUDOKU DO ZÉ!';
+            messageEl.classList.add('success');
         } else {
-            document.getElementById('message').textContent = 'Fim de jogo! Tente novamente!';
-            document.getElementById('message').style.color = 'red';
+            messageEl.textContent = '❌ Fim de jogo! Tente novamente!';
+            messageEl.classList.add('error');
         }
     }
     
@@ -339,6 +342,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const remainingSeconds = seconds % 60;
         document.getElementById('timer').textContent = 
             `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            
+        // Add pulse animation every minute
+        if (seconds % 60 === 0) {
+            const timerEl = document.getElementById('timer');
+            timerEl.style.animation = 'pulse 0.5s';
+            setTimeout(() => {
+                timerEl.style.animation = '';
+            }, 500);
+        }
     }
     
     // Set up event listeners
@@ -396,6 +408,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Select the new cell
         selectCell(cells[row][col], row, col);
     }
+    
+    // Add animation for new game button
+    document.getElementById('new-game').addEventListener('mouseover', function() {
+        this.style.transform = 'scale(1.05)';
+    });
+    
+    document.getElementById('new-game').addEventListener('mouseout', function() {
+        this.style.transform = 'scale(1)';
+    });
+    
+    // Add keyboard shortcut for new game (Ctrl+N)
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+            e.preventDefault();
+            document.getElementById('new-game').click();
+        }
+    });
     
     // Initialize the game
     init();
